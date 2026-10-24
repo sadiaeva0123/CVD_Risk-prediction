@@ -1,0 +1,25 @@
+Metric,Value,Description
+Confusion Matrix,,
+,Predicted: Yes,Predicted: No
+Actual: Yes,380,5
+Actual: No,861,283
+,,
+Metric,Value,Description
+Total Samples,1529,Total patient records evaluated
+True Positives,380,Correctly predicted CVD = Yes
+True Negatives,283,Correctly predicted CVD = No
+False Positives,861,Predicted Yes but actual No (Type I Error)
+False Negatives,5,Predicted No but actual Yes (Type II Error)
+,,
+Accuracy,0.4336,Overall correct predictions / total
+Precision (PPV),0.3062,TP / (TP + FP)
+Recall (Sensitivity),0.987,TP / (TP + FN) — ability to detect CVD
+Specificity,0.2474,TN / (TN + FP) — ability to detect No CVD
+F1 Score,0.4674,Harmonic mean of Precision and Recall
+Negative Predictive Value (NPV),0.9826,TN / (TN + FN)
+False Positive Rate (FPR),0.7526,FP / (FP + TN)
+False Negative Rate (FNR),0.013,FN / (FN + TP)
+Balanced Accuracy,0.6172,(Sensitivity + Specificity) / 2
+AUC-ROC,0.6172,Area under the ROC curve
+Matthews Corr. Coef. (MCC),0.2602,Balanced metric even with class imbalance
+Cohen's Kappa,0.1349,Agreement beyond chance

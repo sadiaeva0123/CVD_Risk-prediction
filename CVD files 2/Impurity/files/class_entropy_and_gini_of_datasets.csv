@@ -1,0 +1,3 @@
+dataset,patients,P_CVD,gini,entropy_bits,entropy_nats
+training split (Extra Trees root node),229513,0.181479916,0.297089912,0.683303869,0.473630151
+BD dataset (actual labels),1529,0.251798561,0.376792092,0.814116351,0.564302454

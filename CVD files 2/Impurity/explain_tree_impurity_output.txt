@@ -1,0 +1,85 @@
+
+==============================================================================
+1. CLASS GINI AND ENTROPY OF THE DATASETS  (class_entropy_and_gini_of_datasets.csv)
+
+training split (Extra Trees root node): 229513 patients, P(CVD) = p = 0.18148
+  Gini    = 1 - p^2 - (1-p)^2 = 1 - 0.18148^2 - 0.81852^2 = 0.29709   (file: 0.29709)
+  Entropy = -p*log2(p) - (1-p)*log2(1-p) = 0.68330 bits   (file: 0.68330)
+  Entropy in nats = bits * ln(2) = 0.68330 * 0.69315 = 0.47363
+
+BD dataset (actual labels): 1529 patients, P(CVD) = p = 0.25180
+  Gini    = 1 - p^2 - (1-p)^2 = 1 - 0.25180^2 - 0.74820^2 = 0.37679   (file: 0.37679)
+  Entropy = -p*log2(p) - (1-p)*log2(1-p) = 0.81412 bits   (file: 0.81412)
+  Entropy in nats = bits * ln(2) = 0.81412 * 0.69315 = 0.56430
+
+==============================================================================
+2. ONE SPLIT, BY HAND: root node of Random Forest tree 0  (random_forest_tree0_all_nodes.csv)
+Split: diastolic_bp <= 79.75
+  parent: n=229513  p=0.1811  Gini=0.2966  H=0.6824
+  left  : n=111220  p=0.0665  Gini=0.1242  H=0.3529
+  right : n=118293  p=0.2888  Gini=0.4108  H=0.8671
+  Gini decrease    = G(parent) - nL/N*G(left) - nR/N*G(right)
+                   = 0.2966 - 0.4846*0.1242 - 0.5154*0.4108 = 0.02467   (file: 0.02467)
+  Information gain = H(parent) - nL/N*H(left) - nR/N*H(right) = 0.06450 bits   (file: 0.06450)
+
+==============================================================================
+3. ROOT -> LEAVES: impurity left after the whole tree  (tree 0 of Random Forest)
+  Leaf-weighted Gini    = sum over leaves (n_leaf/N) * Gini(leaf) = 0.18781
+  Leaf-weighted entropy = sum over leaves (n_leaf/N) * H(leaf)    = 0.43541 bits
+  Gini reduction = 1 - 0.1878/0.2966 = 36.7%
+  Entropy reduction (information gained) = 1 - 0.4354/0.6824 = 36.2%
+  file (per_tree, RF tree 0): leaf_weighted_gini=0.18781, leaf_weighted_entropy_bits=0.43541
+  check: total_gini_decrease = root Gini - leaf Gini = 0.10877 (file: 0.10877)
+
+==============================================================================
+4. FEATURE IMPORTANCE FROM IMPURITY (tree 0 of Random Forest)
+  importance(feature) = sum of (n_node/N * decrease) over nodes splitting on that feature,
+                        divided by the same sum over all nodes
+                   gini_share_%  entropy_share_%
+split_feature                                   
+diastolic_bp               37.6             40.5
+systolic_bp                23.9             19.8
+age                        10.8             13.2
+total_cholesterol          10.2             10.2
+bmi                         6.0              6.4
+smoking                     5.1              3.8
+diabetes                    3.8              3.1
+sex                         1.8              2.0
+physical_activity           0.8              1.1
+  (the file averages this over all 300 trees -> feature_impurity_importance_all_tree_models.csv)
+
+==============================================================================
+5. BOOSTED TREES: log loss, gradients, hessians  (lightgbm_tree0_all_nodes.csv)
+  Root of LightGBM tree 0: rows used = 174297, node value (log-odds) = -1.50638
+  Probability = 1/(1+exp(-log-odds)) = 0.18148  (= training CVD share)
+  Hessian per row = p(1-p) = 0.14854
+  Hessian cover = rows * p(1-p) = 174297 * 0.14854 = 25890.5   (file: 25890.9)
+  Starting log loss = -[p ln p + (1-p) ln(1-p)] = 0.47363 nats = the training entropy 0.6833 bits * ln 2
+   model  trees  total_splits  mean_gain_per_split  starting_log_loss_nats (= label entropy)
+ XGBoost    558         44611              61.2137                                    0.4736
+LightGBM    452         54665              30.8917                                    0.4736
+
+==============================================================================
+6. GAIN IMPORTANCE (XGBoost / LightGBM)
+
+LightGBM: share = gain on feature / total gain (1,688,693)
+  systolic_bp             538,053 / 1,688,693 =  31.9%   (8823 splits)
+  diastolic_bp            519,002 / 1,688,693 =  30.7%   (8201 splits)
+  age                     248,695 / 1,688,693 =  14.7%   (8790 splits)
+  total_cholesterol       156,246 / 1,688,693 =   9.3%   (10948 splits)
+  bmi                     110,984 / 1,688,693 =   6.6%   (11317 splits)
+  smoking                  44,907 / 1,688,693 =   2.7%   (2056 splits)
+  diabetes                 31,309 / 1,688,693 =   1.9%   (1709 splits)
+  sex                      26,505 / 1,688,693 =   1.6%   (1484 splits)
+  physical_activity        12,993 / 1,688,693 =   0.8%   (1337 splits)
+
+XGBoost: share = gain on feature / total gain (2,730,806)
+  systolic_bp             938,974 / 2,730,806 =  34.4%   (7995 splits)
+  diastolic_bp            910,853 / 2,730,806 =  33.4%   (7227 splits)
+  age                     395,003 / 2,730,806 =  14.5%   (7359 splits)
+  total_cholesterol       208,126 / 2,730,806 =   7.6%   (7575 splits)
+  bmi                      91,928 / 2,730,806 =   3.4%   (6718 splits)
+  smoking                  75,006 / 2,730,806 =   2.7%   (2516 splits)
+  diabetes                 49,332 / 2,730,806 =   1.8%   (1932 splits)
+  sex                      44,603 / 2,730,806 =   1.6%   (1830 splits)
+  physical_activity        16,981 / 2,730,806 =   0.6%   (1459 splits)

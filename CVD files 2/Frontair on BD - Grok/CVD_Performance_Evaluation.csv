@@ -1,0 +1,12 @@
+Category,Count_or_Value,Percentage,Description
+Correct Predictions,973,63.64%,TP + TN
+Incorrect Predictions,556,36.36%,FP + FN
+True Positives,347,22.69%,Actual Yes correctly predicted as Yes
+True Negatives,626,40.94%,Actual No correctly predicted as No
+False Positives,518,33.88%,Actual No incorrectly predicted as Yes
+False Negatives,38,2.49%,Actual Yes incorrectly predicted as No
+Accuracy,0.6364,63.64%,Overall correct rate
+Precision,0.4012,40.12%,"Of predicted Yes, how many were actually Yes"
+Recall/Sensitivity,0.9013,90.13%,"Of actual Yes, how many were correctly found"
+Specificity,0.5472,54.72%,"Of actual No, how many were correctly found"
+F1-Score,0.5552,55.52%,Harmonic mean of Precision and Recall

@@ -1,0 +1,15 @@
+Metric,Value
+Accuracy,0.4336
+Precision,0.3062
+Recall (Sensitivity),0.987
+Specificity,0.2474
+F1 Score,0.4674
+False Positive Rate,0.7526
+False Negative Rate,0.013
+AUC-ROC,0.6172
+MCC,0.2602
+Cohen's Kappa,0.1349
+True Positives (TP),380
+True Negatives (TN),283
+False Positives (FP),861
+False Negatives (FN),5

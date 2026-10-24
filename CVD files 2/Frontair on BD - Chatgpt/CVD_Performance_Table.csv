@@ -1,0 +1,18 @@
+Metric,Value,Unit
+Number of records,1529.0,Count
+Actual Yes,385.0,Count
+Actual No,1144.0,Count
+Predicted Yes,1138.0,Count
+Predicted No,391.0,Count
+Accuracy,0.49574885546108566,Proportion
+Precision (Yes),0.3304042179261863,Proportion
+Recall / Sensitivity (Yes),0.9766233766233766,Proportion
+Specificity (No),0.3339160839160839,Proportion
+F1-score (Yes),0.4937623112278398,Proportion
+Balanced Accuracy,0.6552697302697302,Proportion
+Negative Predictive Value,0.9769820971867008,Proportion
+Matthews Correlation Coefficient (MCC),0.30895886534030476,Score
+True Positives (TP),376.0,Count
+False Positives (FP),762.0,Count
+True Negatives (TN),382.0,Count
+False Negatives (FN),9.0,Count

@@ -1,0 +1,3 @@
+model,trees,split_criterion_used_in_training,total_nodes,total_leaves,mean_nodes_per_tree,mean_depth,root_P_CVD (training),root_gini,root_entropy_bits,leaf_weighted_gini,leaf_weighted_entropy_bits,gini_reduction_percent,entropy_reduction_percent,check_gini_equals_sklearn_impurity
+Extra Trees,500,gini,10320650,5160575,20641.3,24.0,0.18147991617032583,0.2970899123942747,0.6833038694377931,0.1923700425940105,0.4289450140887636,35.24854444108089,37.22485218154994,Yes
+Random Forest,300,gini,1688034,844167,5626.78,14.0,0.1814791754715419,0.2970876170710119,0.6832989776726589,0.18967901617488916,0.4386903138770459,36.153846449429494,35.798189634171415,Yes

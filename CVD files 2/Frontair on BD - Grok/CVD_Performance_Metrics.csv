@@ -1,0 +1,14 @@
+Metric,Value,Percentage
+Total Samples,1529,
+True Positives (TP),347,
+True Negatives (TN),626,
+False Positives (FP),518,
+False Negatives (FN),38,
+Accuracy,0.6364,63.64%
+Precision (PPV),0.4012,40.12%
+Recall (Sensitivity),0.9013,90.13%
+Specificity,0.5472,54.72%
+F1-Score,0.5552,55.52%
+Negative Predictive Value (NPV),0.9428,94.28%
+False Positive Rate (FPR),0.4528,45.28%
+False Negative Rate (FNR),0.0987,9.87%

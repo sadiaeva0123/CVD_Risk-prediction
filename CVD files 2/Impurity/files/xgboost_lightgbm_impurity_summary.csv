@@ -1,0 +1,3 @@
+model,trees,total_nodes,total_splits,total_leaves,node_impurity_measure,total_gain_all_splits,mean_gain_per_split,starting_P_CVD (base score),starting_log_loss_nats (= label entropy)
+XGBoost,558,89780,44611,45169,"binary log loss (cross-entropy), second-order approximation; split gain = reduction of the regularised loss",2730805.6264154,61.21372814811145,0.18147992,0.47363015633534794
+LightGBM,452,109782,54665,55117,"binary log loss (cross-entropy), second-order approximation; split gain = reduction of the regularised loss",1688693.4344970584,30.891675377244276,0.1814758967266292,0.4736240958112926
