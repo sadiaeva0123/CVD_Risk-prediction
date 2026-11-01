@@ -1,0 +1,6 @@
+predictor,source
+Classifier Model,/kaggle/input/datasets/sadiaeva23/compare-of-3-aspects-of-cvd-project/performance of BD test/BD_CVD_predictions.csv
+ChatGPT (frontier),/kaggle/input/datasets/sadiaeva23/compare-of-3-aspects-of-cvd-project/Frontair on BD - Chatgpt/Frontair model CHAtgpt - BD_2025_Final_Dataset_with_CVD_prediction.csv [CVD prediction]
+Claude (frontier),/kaggle/input/datasets/sadiaeva23/compare-of-3-aspects-of-cvd-project/Frontair on BD - Claud/BD_2025_CVD_Predictions.csv [CVD_Prediction]
+Grok (frontier),/kaggle/input/datasets/sadiaeva23/compare-of-3-aspects-of-cvd-project/Frontair on BD - Grok/Frontair Model grok - BD_2025_Final_Dataset_with_CVD_prediction.csv [CVD prediction]
+Doctor,"/kaggle/input/datasets/sadiaeva23/compare-of-3-aspects-of-cvd-project/Doctor's prediction/BD_2025_Final Dataset with actual prediction and doctors prediction.csv [CVD risk By doctor: High = Yes, Low = No]"

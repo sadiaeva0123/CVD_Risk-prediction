@@ -1,0 +1,10 @@
+model,TN,FP,FN,TP
+Extra Trees,678,466,119,266
+XGBoost,869,275,199,186
+LightGBM,845,299,196,189
+SVM (RBF kernel),426,718,72,313
+Random Forest,617,527,109,276
+KNN,559,585,107,278
+Logistic Regression,685,459,123,262
+Neural Network (MLP),528,616,102,283
+Final ensemble,780,364,166,219

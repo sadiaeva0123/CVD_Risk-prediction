@@ -1,0 +1,36 @@
+BD EVALUATION REPORT
+====================
+
+Predictions file: /kaggle/input/datasets/sadiaeva23/compare-of-3-aspects-of-cvd-project/performance of BD test/BD_CVD_predictions.csv
+Actual label file: /kaggle/input/datasets/sadiaeva23/compare-of-3-aspects-of-cvd-project/Doctor's prediction/BD_2025_Final Dataset with actual prediction and doctors prediction.csv
+Actual label column: 'CVD Prediction' (Yes = 1, No = 0)
+Patients: 1529 | actual CVD Yes 385 (25.18%) | No 1144
+
+Nothing was trained or tuned on BD. Predictions use the thresholds selected during training.
+Threshold rule (training): Youden J (max sensitivity + specificity - 1) on the validation split; ensemble threshold from its out-of-fold validation probabilities
+               model  training_threshold  threshold_applied_on_BD BD_predictions_match_threshold
+         Extra Trees            0.185983                 0.185983                            Yes
+             XGBoost            0.185449                 0.185449                            Yes
+            LightGBM            0.198977                 0.198977                            Yes
+    SVM (RBF kernel)            0.167352                 0.167352                            Yes
+       Random Forest            0.190916                 0.190916                            Yes
+                 KNN            0.177702                 0.177702                            Yes
+ Logistic Regression            0.153274                 0.153274                            Yes
+Neural Network (MLP)            0.181407                 0.181407                            Yes
+      Final ensemble            0.190797                 0.190797                            Yes
+
+Final ensemble: accuracy 0.6534, recall 0.5688, specificity 0.6818, F1 0.4525, ROC-AUC 0.6712
+Highest ROC-AUC: Extra Trees (0.6980)
+
+               model    n  threshold_used  accuracy  precision  recall  sensitivity  specificity     f1  roc_auc  pr_auc  balanced_accuracy    mcc  brier  actual_CVD_percent  predicted_CVD_percent  TP  FP  TN  FN
+         Extra Trees 1529          0.1860    0.6174     0.3634  0.6909       0.6909       0.5927 0.4763   0.6980  0.4040             0.6418 0.2464 0.1762             25.1799                47.8744 266 466 678 119
+             XGBoost 1529          0.1854    0.6900     0.4035  0.4831       0.4831       0.7596 0.4397   0.6896  0.4179             0.6214 0.2296 0.1835             25.1799                30.1504 186 275 869 199
+            LightGBM 1529          0.1990    0.6763     0.3873  0.4909       0.4909       0.7386 0.4330   0.6803  0.4088             0.6148 0.2137 0.1832             25.1799                31.9163 189 299 845 196
+    SVM (RBF kernel) 1529          0.1674    0.4833     0.3036  0.8130       0.8130       0.3724 0.4421   0.6448  0.3516             0.5927 0.1717 0.2040             25.1799                67.4297 313 718 426  72
+       Random Forest 1529          0.1909    0.5840     0.3437  0.7169       0.7169       0.5393 0.4646   0.6884  0.4007             0.6281 0.2227 0.1757             25.1799                52.5180 276 527 617 109
+                 KNN 1529          0.1777    0.5474     0.3221  0.7221       0.7221       0.4886 0.4455   0.6481  0.3373             0.6054 0.1845 0.1960             25.1799                56.4421 278 585 559 107
+ Logistic Regression 1529          0.1533    0.6194     0.3634  0.6805       0.6805       0.5988 0.4738   0.6893  0.4062             0.6396 0.2428 0.1804             25.1799                47.1550 262 459 685 123
+Neural Network (MLP) 1529          0.1814    0.5304     0.3148  0.7351       0.7351       0.4615 0.4408   0.5939  0.2898             0.5983 0.1734 0.2444             25.1799                58.7966 283 616 528 102
+      Final ensemble 1529          0.1908    0.6534     0.3756  0.5688       0.5688       0.6818 0.4525   0.6712  0.3958             0.6253 0.2240 0.1844             25.1799                38.1295 219 364 780 166
+
+These are model-generated risk assessments, not medical diagnoses.
